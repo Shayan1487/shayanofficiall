@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fa" dir="ltr">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShayanOfficial</title>
+    <style>
+        :root {
+            --red: #ff0000;
+            --dark-red: #cc0000;
+            --black: #000000;
+            --gray: #1a1a1a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Bebas Neue', Arial, sans-serif;
+        }
+        
+        @font-face {
+            font-family: 'Bebas Neue';
+            src: url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--black);
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        nav {
+            background-color: var(--black);
+            padding: 20px 0;
+            border-bottom: 2px solid var(--red);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav li {
+            margin: 0 25px;
+        }
+        
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 25px;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--red);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--red);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        header {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('https://example.com/your-image.jpg') no-repeat center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+        
+        .header-content h1 {
+            font-size: 6rem;
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+        
+        .header-content p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .bio {
+            padding: 100px 20px;
+            background-color: var(--gray);
+        }
+        
+        .bio h2 {
+            font-size: 3rem;
+            color: var(--red);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .bio-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .bio-text {
+            flex: 1;
+        }
+        
+        .bio-text p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .bio-image {
+            flex: 1;
+        }
+        
+        .bio-image img {
+            width: 100%;
+            border: 3px solid var(--red);
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+        }
+        
+        .gallery {
+            padding: 100px 20px;
+        }
+        
+        .gallery h2 {
+            font-size: 3rem;
+            color: var(--red);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .gallery-item {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid var(--red);
+            transition: all 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        footer {
+            background-color: var(--black);
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 2px solid var(--red);
+            position: relative;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .social-links a {
+            color: #fff;
+            font-size: 2rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--red);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            font-size: 1.1rem;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--red);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 999;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 4rem;
+            }
+            
+            .bio-content {
+                flex-direction: column;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav li {
+                margin: 0 10px;
+            }
+            
+            nav a {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#home" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <nav>
+        <ul>
+            <li><a href="#home">خانه</a></li>
+            <li><a href="#bio">بیوگرافی</a></li>
+            <li><a href="#gallery">گالری</a></li>
+            <li><a href="#contact">تماس</a></li>
+        </ul>
+    </nav>
+
+    <header id="home">
+        <div class="header-content">
+            <h1>Shayan</h1>
+            <p>سلام! من شایان هستم، یه هکر اخلاقی و برنامه‌نویس خفن که عاشق چالش‌های سایبری و کدنویسی‌ام. با تیم شکست‌ناپذیرم (Team Shekast-Napazir) اینجام که دنیای تکنولوژی رو بترکونم!
+
+                مهارت‌هام
+                فول‌استک بک‌اند و فرانت‌اند: می‌تونم وب‌سایت‌های حرفه‌ای از صفر تا صد (بک‌اند و فرانت‌اند) طراحی کنم.
+                هک اخلاقی و تست نفوذ: با ابزارهایی مثل Kali Linux و Metasploit، امنیت سیستم‌ها رو تست می‌کنم و آسیب‌پذیری‌ها رو پیدا می‌کنم.
+                مهندسی اجتماعی: ترفندهای روان‌شناختی برای تست امنیت رو بلدم و تو این زمینه حسابی مهارت دارم.
+                خلاقیت: همیشه دنبال ایده‌های بمب‌گونه‌ام که پروژه‌هام رو خاص کنه!
+                بیا باهم تو دنیای هک و برنامه‌نویسی بترکونیم! 😄</p>
+        </div>
+    </header>
+
+    <section class="bio" id="bio">
+        <h2>بیوگرافی</h2>
+        <div class="bio-content">
+            <div class="bio-text">
+                <p>من شایان هستم، یه جنگجوی سایبری و جادوگر کد که تو دنیای دیجیتال طوفان به پا می‌کنم! از طراحی وب‌سایت‌های نفس‌گیر به‌عنوان یه برنامه‌نویس فول‌استک (بک‌اند و فرانت‌اند) گرفته تا نفوذ به عمیق‌ترین لایه‌های امنیت سیستم‌ها با هک اخلاقی و تست نفوذ، من همیشه تو خط مقدم تکنولوژی‌ام. با ترفندهای مهندسی اجتماعی، ذهن‌ها رو می‌خونم و با ابزارهای خفن مثل Kali Linux، هر چالشی رو به زانو درمیارم. عاشق کشف ناشناخته‌ها و ساختن چیزای بمب‌گونه‌ام—از یه خط کد که دنیا رو تغییر می‌ده تا یه استراتژی هک که همه رو غافلگیر می‌کنه. با تیم شکست‌ناپذیرم (Team Shekast-Napazir) اینجام که امنیت رو بازتعریف کنم و آینده رو هک کنم. بیا با من همراه شو تا تو این دنیای بی‌نهایت، یه انفجار سایبری خلق کنیم! 🌟
+            <div class="bio-image">
+                <img src="C:\Users\Asrejadid\Desktop\my site\image\download (1).jfif" alt="عکس شما">
+            </div>    
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <h2>گالری تصاویر</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="C:\Users\Asrejadid\Desktop\my site\image\Promises in javascript_js.jpg" alt="جاوااسکریپت">
+            </div>
+            <div class="gallery-item">
+                <img src="C:\Users\Asrejadid\Desktop\my site\image\kalilinux.jpg" alt="Kali Linux">
+            </div>
+            <div class="gallery-item">
+                <img src="C:\Users\Asrejadid\Desktop\my site\image\everything's gonna be okay_.jpg" alt="پروژه اول">
+            </div>
+            <div class="gallery-item">
+                <img src="C:\Users\Asrejadid\Desktop\my site\image\c1f51f08-0fe9-43bb-8fa4-a1ac91804878.jpg" alt="پروژه دوم">
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="social-links">
+            <a href="https://www.instagram.com\whoami_12345678" target="_blank" style="color: #ff0000;" onclick="alert('🔥 در حال انتقال به پیج اینستاگرام...')">
+                <i class="fab fa-instagram fa-2x"></i>
+            </a>
+            <a href="https://t.me\@HalilIbrahim_program" target="_blank" style="color: #ff0000;" onclick="alert('💣 در حال ورود به پایگاه تلگرامی تیم شکست‌ناپذیر')">
+                <i class="fab fa-telegram fa-2x"></i>
+            </a>
+        </div>
+        <p class="copyright">تمامی حقوق محفوظ است &copy; <span id="year"></span></p>
+    </footer>
+
+    <script>
+        // نمایش/مخفی کردن دکمه بازگشت به بالا
+        window.addEventListener('scroll', function() {
+            const backToTop = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        
+        // سال جاری
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
